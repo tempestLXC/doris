@@ -343,7 +343,7 @@ Binlog Load只能支持Unique类型的目标表，且必须激活目标表的Bat
 
 ```text
 --create Mysql table
-CREATE TABLE `demo.source_test` (
+CREATE TABLE `demo`.`source_test` (
   `id` int(11) NOT NULL COMMENT "",
   `name` int(11) NOT NULL COMMENT ""
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -368,7 +368,7 @@ ALTER TABLE target_test ENABLE FEATURE "BATCH_DELETE";
 ```text
 CREATE SYNC `demo`.`job`
 (
-FROM `demo`.`source_test1` INTO `target_test`
+FROM `demo`.`source_test` INTO `target_test`
 (id,name)
 )
 FROM BINLOG
