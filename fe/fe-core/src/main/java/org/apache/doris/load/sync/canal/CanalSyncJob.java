@@ -56,6 +56,7 @@ public class CanalSyncJob extends SyncJob {
     protected static final String CANAL_PASSWORD = "canal.password";
     protected static final String CANAL_BATCH_SIZE = "canal.batchSize";
     protected static final String CANAL_DEBUG = "canal.debug";
+    protected static final String CANAL_IGNORE_CASE = "canal.ignoreCase";
 
     @SerializedName(value = "remote")
     private final CanalDestination remote;
@@ -152,6 +153,11 @@ public class CanalSyncJob extends SyncJob {
         // optional
         if (properties.containsKey(CANAL_DEBUG)) {
             debug = Boolean.parseBoolean(properties.get(CANAL_DEBUG));
+        }
+
+        // optional
+        if (properties.containsKey(CANAL_IGNORE_CASE)) {
+            ignoreCase = Boolean.parseBoolean(properties.get(CANAL_IGNORE_CASE));
         }
     }
 
