@@ -80,8 +80,8 @@ public class CanalSyncDataConsumer extends SyncDataConsumer {
         this.idToChannels = idToChannels;
     }
 
-    public CanalSyncDataConsumer(CanalSyncJob syncJob, CanalConnector connector, ReentrantLock getLock, boolean debug) {
-        super(debug);
+    public CanalSyncDataConsumer(CanalSyncJob syncJob, CanalConnector connector, ReentrantLock getLock, boolean debug, boolean ignoreCase) {
+        super(debug, ignoreCase);
         this.syncJob = syncJob;
         this.connector = connector;
         this.dataBlockingQueue = Queues.newLinkedBlockingQueue(1024);
@@ -343,7 +343,7 @@ public class CanalSyncDataConsumer extends SyncDataConsumer {
                         processDDL(header, eventType, sql);
                         return;
                     }
-                    String schemaTableName = CanalUtils.getFullName(header.getSchemaName(), header.getTableName());
+                    String schemaTableName = CanalUtils.getFullName(header.getSchemaName(), header.getTableName(), ignoreCase);
                     if (preferChannels.containsKey(schemaTableName)) {
                         CanalSyncChannel channel = preferChannels.get(schemaTableName);
                         channel.submit(batchId, eventType, rowChange);

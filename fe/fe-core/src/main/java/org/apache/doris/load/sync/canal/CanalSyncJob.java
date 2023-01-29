@@ -68,6 +68,9 @@ public class CanalSyncJob extends SyncJob {
     @SerializedName(value = "debug")
     private boolean debug = false;
 
+    @SerializedName(value = "ignoreCase")
+    private boolean ignoreCase = false;
+
     private transient SyncCanalClient client;
 
     public CanalSyncJob(long id, String jobName, long dbId) {
@@ -82,7 +85,7 @@ public class CanalSyncJob extends SyncJob {
         // create channels
         initChannels();
         // create client
-        client = new SyncCanalClient(this, remote.getDestination(), connector, batchSize, debug);
+        client = new SyncCanalClient(this, remote.getDestination(), connector, batchSize, debug, ignoreCase);
         // register channels into client
         client.registerChannels(channels);
     }
