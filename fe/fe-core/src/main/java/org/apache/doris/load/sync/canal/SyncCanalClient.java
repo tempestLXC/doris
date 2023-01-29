@@ -51,14 +51,14 @@ public class SyncCanalClient {
     }
 
     public SyncCanalClient(CanalSyncJob syncJob, String destination, CanalConnector connector,
-                           int batchSize, boolean debug) {
-        this(syncJob, destination, connector, batchSize, debug, ".*\\..*");
+        int batchSize, boolean debug, boolean ignoreCase) {
+        this(syncJob, destination, connector, batchSize, debug, ignoreCase, ".*\\..*");
     }
 
     public SyncCanalClient(CanalSyncJob syncJob, String destination, CanalConnector connector,
-                           int batchSize, boolean debug, String filter) {
+        int batchSize, boolean debug, boolean ignoreCase, String filter) {
         this.connector = connector;
-        this.consumer = new CanalSyncDataConsumer(syncJob, connector, getLock, debug);
+        this.consumer = new CanalSyncDataConsumer(syncJob, connector, getLock, debug, ignoreCase);
         this.receiver = new CanalSyncDataReceiver(syncJob, connector, destination,
                 filter, consumer, batchSize, getLock);
         this.idToChannels = Maps.newHashMap();

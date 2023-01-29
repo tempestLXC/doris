@@ -25,10 +25,12 @@ public class SyncDataConsumer extends SyncLifeCycle {
 
     protected boolean debug;
 
-    public SyncDataConsumer(boolean debug) {
-        this.debug = debug;
-    }
+    protected boolean ignoreCase;
 
+    public SyncDataConsumer(boolean debug, boolean ignoreCase) {
+        this.debug = debug;
+        this.ignoreCase = ignoreCase;
+    }
     @Override
     public void start() {
         super.start();

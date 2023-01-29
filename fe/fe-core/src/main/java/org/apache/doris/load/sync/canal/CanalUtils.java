@@ -34,6 +34,7 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class CanalUtils {
     private static Logger logger = LogManager.getLogger(CanalUtils.class);
@@ -107,10 +108,20 @@ public class CanalUtils {
     }
 
     public static String getFullName(String schemaName, String tableName) {
+
+        return getFullName(schemaName, tableName, false);
+    }
+
+    public static String getFullName(String schemaName, String tableName, boolean ignoreCase) {
         StringBuilder sb = new StringBuilder();
         if (schemaName != null) {
             sb.append(schemaName).append(".");
         }
+
+        if (ignoreCase && StringUtils.isNotEmpty(tableName)) {
+            tableName = tableName.toLowerCase(Locale.ROOT);
+        }
+
         sb.append(tableName);
         return sb.toString().intern();
     }
