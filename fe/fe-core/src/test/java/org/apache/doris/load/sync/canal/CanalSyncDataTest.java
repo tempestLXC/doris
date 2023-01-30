@@ -220,7 +220,7 @@ public class CanalSyncDataTest {
         };
 
         CanalSyncDataConsumer consumer = new CanalSyncDataConsumer(
-                syncJob, connector, getLock, false);
+                syncJob, connector, getLock, false, false);
         CanalSyncDataReceiver receiver = new CanalSyncDataReceiver(
                 syncJob, connector, "test", "mysql_db.mysql_tbl", consumer, 8192, getLock);
         CanalSyncChannel channel = new CanalSyncChannel(
@@ -295,7 +295,7 @@ public class CanalSyncDataTest {
         };
 
         CanalSyncDataConsumer consumer = new CanalSyncDataConsumer(
-                syncJob, connector, getLock, false);
+                syncJob, connector, getLock, false, false);
         CanalSyncDataReceiver receiver = new CanalSyncDataReceiver(
                 syncJob, connector, "test", "mysql_db.mysql_tbl", consumer, 8192, getLock);
         CanalSyncChannel channel = new CanalSyncChannel(
@@ -359,7 +359,7 @@ public class CanalSyncDataTest {
         };
 
         CanalSyncDataConsumer consumer = new CanalSyncDataConsumer(
-                syncJob, connector, getLock, false);
+                syncJob, connector, getLock, false, false);
         CanalSyncDataReceiver receiver = new CanalSyncDataReceiver(
                 syncJob, connector, "test", "mysql_db.mysql_tbl", consumer, 8192, getLock);
         CanalSyncChannel channel = new CanalSyncChannel(
@@ -442,7 +442,7 @@ public class CanalSyncDataTest {
         };
 
         CanalSyncDataConsumer consumer = new CanalSyncDataConsumer(
-                syncJob, connector, getLock, false);
+                syncJob, connector, getLock, false, false);
         CanalSyncDataReceiver receiver = new CanalSyncDataReceiver(
                 syncJob, connector, "test", "mysql_db.mysql_tbl", consumer, 8192, getLock);
         CanalSyncChannel channel = new CanalSyncChannel(
